@@ -25,17 +25,68 @@ function checkGuess(){
         guesses.textContent= `${guesses.textContent} ${userGuess}`;
         /* it appends the userguess value to the textcontent of the guesses element, it uses template literals to concatenate the new guesses with the existing content*/
     }
-}
 
-if(userGuess == randomNum){
+if(userGuess === randomNum){
     lastResult.textContent = "Congratulations! You got it right!"; /* it sets the textcontent of the lastresult element to congrat........*/
     lastResult.style.backgroundColor = "green";
     lowOrHigh.textContent=""
     setGameOver();
 }
-else if{
-    
+
+else if(guessCount === 10){
+    lastResult.textContent = "!!!GAME OVER!!!" /*it updates the text cntent of the last result elemrnt to indicate that game is over*/
+    lowOrHigh.textContent= ""
+    setGameOver(); /* clls the setGameOver function to handle the dame over logic*/
 }
+
+else{
+    lastResult.textContent = "Wrong!"
+    lastResult.style.backgroundColor= "red" 
+    if(userGuess < randomNum){
+        lowOrHigh.textContent= "last guess was too low!"
+    }
+
+else if(userGuess > randomNum){
+    lowOrHigh.textContent = "last guess was too high!"
+}
+}
+
+guessCount++;
+guessField.value =""
+guessField.focus();
+guessCount===1;
 
  checkGuess();
 
+ guessSubmit.addEventListener("click", checkGuess);
+}
+ 
+function setGameOver() {
+    guessField.disabled = true;
+    guessSubmit.disabled = true;
+    resetButton = document.createElement("button");
+    resetButton.textContent = "Start new game";
+    document.body.append(resetButton);
+    resetButton.addEventListener("click", resetGame);
+  }
+
+  function resetGame() {
+    guessCount = 1;
+  
+    const resetParas = document.querySelectorAll(".resultParas p");
+    for (const resetPara of resetParas) {
+      resetPara.textContent = "";
+    }
+  
+    resetButton.parentNode.removeChild(resetButton);
+  
+    guessField.disabled = false;
+    guessSubmit.disabled = false;
+    guessField.value = "";
+    guessField.focus();
+  
+    lastResult.style.backgroundColor = "white";
+  
+    randomNumber = Math.floor(Math.random() * 100) + 1;
+  }
+  
