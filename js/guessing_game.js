@@ -3,8 +3,7 @@ let randomNum= Math.floor(Math.random() * 100) + 1;
 
 const guesses = document.querySelector(".guesses");
 /* selects an html element with the class name "guesses using document.querySelector method */
-const lastResult = document.querySelector(".lastResult");
-/* selects an html element with the class name lastResult using document.querySelector method */
+a/* selects an html element with the class name lastResult using document.querySelector method */
 const lowOrHigh = document.querySelector(".lowOrHigh");
 /* selects an html element with the class name lowOrHigh using document.querySelector method */
 const guessSubmit = document.querySelector(".guessSubmit");
@@ -89,4 +88,3 @@ function setGameOver() {
   
     randomNumber = Math.floor(Math.random() * 100) + 1;
   }
-  
